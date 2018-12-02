@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新新电影</title>
+    <meta name="referrer" content="no-referrer">
+    <link href="{% static 'images/xx2.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'css/aqiyi.css' %}">
+</head>
+<body>
+	<div class="menu" id="menu">
+        <div class="menu_header_">
+            <a href="#"><img class="SRC" src="{% static 'images/xx1.png' %}"></a>
+        </div>
+        <nav class="nav" id="topnav">
+          <li id="nav_li"><a onclick="changeIndex(this);" href="{% url 'aqiyi:home' %} ">爱奇艺</a></li>
+          <li id="nav_li"><a onclick="changeIndex(this);" href="{% url 'aqiyi:you_home' %}">优酷</a> </li>
+          <li id="nav_li"><a onclick="changeIndex(this);" href="{% url 'aqiyi:teng_home' %}">腾讯</a></li>
+        </nav>
+
+        <div id="search_bar" class="search_bar">
+            <form  id="searchform" action="{% url 'aqiyi:sousuo' %}" method="get" name="searchform">
+              <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard" required>
+              <input type="submit" name="Submit" class="Submit" value="       "/>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="navigation">
+        <nav class="navigation_nav">
+            <li><a href="{% url 'aqiyi:dianyin' 0 %}">电影</a></li>
+            <li><a href="{% url 'aqiyi:TVju' 0%}">电视剧</a></li>
+            <li><a href="{% url 'aqiyi:zongyi' 0%}">综艺</a></li>
+            <li><a href="{% url 'aqiyi:dongman' 0%}">动漫</a></li>
+            <li><a href="{% url 'aqiyi:jilu' 0%}">记录片</a></li>
+        </nav>
+    </div>
+
+    <div class="movie_text">
+        <div class="movie_text_left">
+            <ul>
+                {% for aqiyimovieLists in aqiyimovieList%}
+                    <li>
+                        <a class="movie_text_A" title="{{ aqiyimovieLists.movie_title}}" href="{{ url }}{{ aqiyimovieLists.movie_url }}">
+                            <img class="movie_text_img" src="{{aqiyimovieLists.movie_src_pic}}"/>
+                            <span class="movie_text_A_txt">{{ aqiyimovieLists.movie_title}}</span>
+                            <span class="movie_text_A_txt1">{{ aqiyimovieLists.movie_pin}}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+    <div class="menu_right_singer_fonter_context">
+        <div class="menu_right_singer_fonter">
+            <a href="{% url 'aqiyi:dianyin' 1%}" ><img src="{% static 'images/zuo.png' %}"></a>
+            <span>第{{ page }}页</span>
+            <a href="{% url 'aqiyi:dianyin' 2%}"><img src="{%  static 'images/you.png' %}"></a>
+        </div>
+    </div>
+
+
+     <div class="fonter">
+        <span>新新播放器</span><br/>
+        <span>盗版乱棍打死</span><br/>
+        <span>联系qq:2530528993</span><br/>
+      </div>
+</body>
+</html>

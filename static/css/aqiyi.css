@@ -1,0 +1,274 @@
+*{
+    padding: 0;
+    margin: 0;
+	text-decoration: none;
+}
+body{
+	background: #dddddd;
+}
+.menu{
+	width: 1300px;
+	height: 70px;
+	margin: auto;
+	padding: auto;
+	background: #444;
+}
+.menu_header_{
+	display: inline-block;
+	width: 180px;
+	height: 70px;
+	margin: 0 0 0 300px;
+	text-align: center;
+	float: left;
+}
+.menu_header_ a{
+	display: inline-block;
+	height: 70px;
+	left: 25%;
+}
+.SRC{
+	display: inline-block;
+	height: 70px;
+}
+.nav_li{
+
+}
+.actived{
+	background: #0066ff;
+}
+.noactive{
+	background: #444;
+}
+#topnav{
+	display: inline-block;
+}
+
+.nav li{
+	display: inline-block;
+	width: 100px;
+	height: 70px;
+}
+.nav li a{
+	display: inline-block;
+	width: 100%;
+	height: 45px;
+	text-align: center;
+	padding-top: 25px;
+}
+
+.nav li a:link{
+	color: #fff;
+}
+.nav li a:visited{
+	color: #fff;
+}
+.nav li a:hover{
+	background: #FF8C00;
+}
+
+#search_bar{
+	display: inline-block;
+}
+#keyboard{
+	height: 22px;
+	border: 0px solid #ddd;
+	padding-left: 32px;
+}
+.Submit{
+	position: relative;
+	right: 86%;
+	background:url("../images/sousuo.jpg") no-repeat center center;
+	border: none;
+}
+
+.navigation{
+	width: 1300px;
+	height: 30px;
+	margin: 10px auto;
+	text-align: center;
+}
+.navigation_nav li{
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+}
+.navigation_nav li a{
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.navigation_nav li a:link,.navigation_nav li a:visited{
+	color: #000;
+}
+.navigation_nav li a:hover{
+	font-size: 20px;
+	text-align: center;
+	background: #FF8C00;
+}
+
+
+.movie_text{
+	width: 1300px;
+	margin: auto;
+	text-align: center;
+}
+.movie_text li{
+	display: inline-block;
+	width: 200px;
+	height: 290px;
+	text-align: center;
+}
+.movie_text li a{
+	display: inline-block;
+	width: 180px;
+	height: 230px;
+	text-align: center;
+}
+.movie_text_A:link,.movie_text_A:visited{
+	color:#000;
+}
+.movie_text_A:hover{
+	color: #00BBFF;
+	font-size: 18px;
+}
+.movie_text_A_txt{
+	width: 100px;
+	text-align: left;
+	overflow: hidden;
+	white-space:nowrap;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	margin: 10px 0 0 0;
+	float: left;
+}
+.movie_text_A_txt1{
+	margin: 10px 0 0 0;
+	color: red;
+	float: right;
+}
+.menu_right_singer_fonter_context{
+	width: 1300px;
+	margin: auto;
+}
+.menu_right_singer_fonter span{
+	display: inline-block;
+	margin: 0 50px 0 50px;
+	letter-spacing: 10px;
+}
+.menu_right_singer_fonter{
+	width: 300px;
+	margin: 20px auto;
+	text-align: center;
+}
+.menu_right_singer_fonter a{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+}
+.menu_right_singer_fonter a:link,.menu_right_singer_fonter a:visited{
+	background: #aaa;
+	color: #000;
+}
+.menu_right_singer_fonter a:hover{
+	background: #FFAA33;
+}
+
+.fonter{
+	text-align: center;
+	width: 1300px;
+	height: 200px;
+	margin: auto;
+	background:#444;
+	line-height: 50px;
+	padding-top: 30px;
+	font-size: 20px;
+}
+
+.movie_text_A_txt2{
+	display: block;
+	width: 150px;
+	margin: 10px 0 0 0;
+	text-align: center;
+	overflow: hidden;
+	white-space:nowrap;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}
+
+
+.fenji{
+	width: 850px;
+	margin: auto;
+}
+.fenji_img{
+	width: 200px;
+	height: 250px;
+	margin: auto;
+}
+.fenji_count{
+	width: 850px;
+	border-top: 5px solid #000000;
+	padding-top: 40px;
+}
+.fenji_count a:link,.fenji_count a:visited{
+	display: inline-block;
+	color: #000;
+	background: #ddd;
+	margin: 0 5px 6px 0;
+	border: 1px solid #000;
+	border-radius:5%;
+	width: 200px;
+	height: 30px;
+	overflow:hidden;
+	white-space:nowrap;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	line-height: 30px;
+	text-align: center;
+}
+.fenji_count a:hover{
+	background:#FFAA33;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.movie_text_youku{
+	width: 1300px;
+	margin: auto;
+	text-align: center;
+}
+.movie_text_youku li{
+	display: inline-block;
+	width: 210px;
+	height: 350px;
+}
+.movie_text_youku li a{
+	display: inline-block;
+	width: 200px;
+	height: 300px;
+}
+.movie_text_youku li a img{
+	width: 200px;
+	height: 300px;
+}
+.fenji_img_you{
+	width: 200px;
+	height: 360px;
+	margin: auto;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新新电影</title>
+    <meta name="referrer" content="no-referrer">
+    <link href="{% static 'images/xx2.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'css/aqiyi.css' %}">
+</head>
+<body>
+	<div class="menu">
+        <div class="menu_header_">
+            <a href="#"><img class="SRC" src="{% static 'images/xx1.png' %}"></a>
+        </div>
+        <nav class="nav" id="topnav">
+          <li class="page"><a href="{% url 'aqiyi:home' %} ">爱奇艺</a></li>
+          <li class="page"><a href="{% url 'aqiyi:you_home' %}">优酷</a> </li>
+          <li class="page"><a href="{% url 'aqiyi:teng_home' %}">腾讯</a></li>
+        </nav>
+
+        <div id="search_bar" class="search_bar">
+            <form  id="searchform" action="{% url 'aqiyi:sousuo' %}" method="get" name="searchform">
+              <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard" required>
+              <input type="submit" name="Submit" class="Submit" value="       "/>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="navigation">
+        <nav class="navigation_nav">
+            <li><a href="{% url 'aqiyi:dianyin' 0%}">电影</a></li>
+            <li><a href="{% url 'aqiyi:TVju' 0%}">电视剧</a></li>
+            <li><a href="{% url 'aqiyi:zongyi' 0%}">综艺</a></li>
+            <li><a href="{% url 'aqiyi:dongman' 0%}">动漫</a></li>
+            <li><a href="{% url 'aqiyi:jilu' 0%}">记录片</a></li>
+        </nav>
+    </div>
+
+    <div class="fenji">
+        <div class="fenji_img_you"><img src="{{ aqi.movie_src_pic }}"></div>
+
+        <div class="fenji_count">
+            {% for aqis in aqifenji %}
+                 <a href="{{ url }}{{aqis.tv_more_url }}" title="{{ aqis.tv_more_title }}">
+                 {{ aqis.tv_more_title }}
+                 </a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+     <div class="fonter">
+        <span>新新播放器</span><br/>
+        <span>盗版乱棍打死</span><br/>
+        <span>联系qq:2530528993</span><br/>
+      </div>
+</body>
+</html>
