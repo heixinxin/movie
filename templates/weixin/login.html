@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信轰炸</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="background-color: #aaa;">
+    <!--particles js   container-->
+    <div  id="particles-js"></div>
+    <!--外部需要引入的particle.js-->
+    <script src="{% static 'js/particles.js' %}"></script>
+    <!--particle.js的开始文件-->
+    <script src="{% static 'js/app.js' %}"></script>
+    <div class="login_wx">
+        <img style="height: 300px;width: 300px;display: block;margin: 50px auto;" id="qrcode" src="https://login.weixin.qq.com/qrcode/{{ qcode }}">
+    </div>
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            checkLogin()
+        });
+
+         function checkLogin(){
+             $.ajax({
+                 url:'/check-login.html',
+                 type:'GET',
+                 dataType:'JSON',
+                 success:function (arg) {
+                     if (arg.code == 408){
+                         checkLogin()
+                     }
+                    else if(arg.code == 201){
+                         $("#qrcode").attr('src',arg.data);
+                         checkLogin()
+                     }
+                     else if(arg.code == 200){
+                            location.href = '/chat.html'
+                     }
+
+                 }
+             })
+         }
+    </script>
+ <a style="text-align: center;display: block;color: #fff;text-decoration: none;background-color: black" href="http://www.miitbeian.gov.cn/"><span>鄂ICP备18029761号</span><br/></a>
+</body>
+</html>

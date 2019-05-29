@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="float:left;width: 20%;">
+        <ol>
+            {% for item in contact_list_dict.MemberList %}
+                <li style="list-style: none;" username='{{ item.UserName }}'>{{ item.NickName }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div style="position: fixed;left: 30%;">
+        <p><input id="Name_input" type="text" placeholder="收消息用户"/></p>
+        <p><input id="Hong" type="text" placeholder="哥 轰炸多少条"></p>
+        <p style="display: none;"><input id="toUser" type="text" placeholder="收消息用户"/></p>
+        <p><textarea id="msg" placeholder="请输入消息"></textarea></p>
+        <p><input id="btn" type="button" value="开始"></p>
+    </div>
+<script src="/static/jquery-1.12.4.js"></script>
+<script>
+
+    $(function () {
+        bindSendMsg();
+        getMsg();
+        bindLi();
+    });
+
+    function bindSendMsg() {
+        $("#btn").click(function () {
+                $.ajax({
+                    url: '/send-msg.html',
+                    type: 'GET',
+                    data: {'toUser': $('#toUser').val(), 'msg': $('#msg').val(),'id':$('#Hong').val()},
+                    dateType: "JSON",
+                    success: function (arg) {
+                        alert(arg)
+                    }
+                })
+        });
+
+    }
+
+    function bindLi() {
+        $('li').dblclick(function () {
+            var v = $(this).attr('username');
+            var m = $(this).text();
+            $('#toUser').val(v);
+            $('#Name_input').val(m);
+        })
+    }
+
+    function getMsg() {
+        $.ajax({
+            url:'/get-msg.html',
+            type:'GET',
+            success:function (arg) {
+                alert(arg);
+                getMsg();
+            }
+        })
+    }
+
+
+
+</script>
+</body>
+</html>

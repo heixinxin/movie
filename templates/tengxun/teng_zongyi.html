@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -16,7 +16,7 @@
         <nav class="nav" id="topnav">
           <li class="page"><a href="{% url 'aqiyi:home' %} ">爱奇艺</a></li>
           <li class="page"><a href="{% url 'aqiyi:you_home' %}">优酷</a> </li>
-          <li class="page"><a href="{% url 'aqiyi:teng_home' %}">腾讯</a></li>
+          <li class="page"><a class="nav_li" href="{% url 'aqiyi:teng_home' %}">腾讯</a></li>
         </nav>
 
         <div id="search_bar" class="search_bar">
@@ -25,14 +25,14 @@
               <input type="submit" name="Submit" class="Submit" value="       "/>
             </form>
         </div>
-
+        <a style="color: #fff;" href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2530528993"><span>联系我吧</span><br/></a>
     </div>
 
     <div class="navigation">
         <nav class="navigation_nav">
             <li><a href="{% url 'aqiyi:teng_dianyin' 0 %}">电影</a></li>
             <li><a href="{% url 'aqiyi:teng_TVju' 0%}">电视剧</a></li>
-            <li><a href="{% url 'aqiyi:teng_zongyi' 0%}">综艺</a></li>
+            <li><a class="nav_li" href="{% url 'aqiyi:teng_zongyi' 0%}">综艺</a></li>
             <li><a href="{% url 'aqiyi:teng_dongman' 0%}">动漫</a></li>
             <li><a href="{% url 'aqiyi:teng_jilu' 0%}">记录片</a></li>
         </nav>
@@ -66,7 +66,8 @@
      <div class="fonter">
         <span>新新播放器</span><br/>
         <span>盗版乱棍打死</span><br/>
-        <span>联系qq:2530528993</span><br/>
+        <a href="http://www.miitbeian.gov.cn/"><span>鄂ICP备18029761号</span><br/></a>
+
       </div>
 </body>
 </html>

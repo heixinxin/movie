@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/xiaosuo.css' %}">
+</head>
+<body>
+    <div class="mu_content">
+        <ul>
+            {% for m in mep %}
+                <li class="mu_title">
+                    <a href="{{ m.href }}">{{ m.title }}</a>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>Title</title>
+</head>
+<body>
+    <div>个人信息</div>
+    <ul>
+        {% for contact in contact_list.ContactList %}
+            <li style="list-style: none;">
+            <img src="https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxgeticon?seq=663041887&username=@06483d9430b68d4e362f8710bb25c6f98538c9d9dc4af6249e35a8a3e20f58d5&skey=@crypt_4fd54ffa_fedbf71515e1e61a46bd34d140b32bd9"/>
+            {{ contact.NickName }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a style="color: black" href="/contact-list.html">查看更多联系</a>
+    <div>公众号信息</div>
+    {% for contact in contact_list.MPSubscribeMsgList %}
+        <h3>{{ contact.NickName }}</h3>
+            {% for msg in contact.MPArticleList %}
+                <div style="color: #dddddd"><a style="color: black" href="{{ msg.Url }}">{{ msg.Title }}</a></div>
+            {% endfor %}
+
+    {% endfor %}
+    
+
+</body>
+</html>

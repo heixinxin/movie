@@ -1,0 +1,126 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.Form_content{
+    width: 820px;
+    margin:80px auto;
+
+
+}
+.xiaoshuo_text{
+    font-size: 20px;
+    height: 30px;
+    width: 700px;
+    background-color: #fff;
+}
+.xiao_submit{
+    height: 35px;
+    width: 100px;
+    border: 1px solid #fff;
+    font-size: 20px;
+    background-color: #f47920;
+}
+
+
+.book_content{
+    width: 1000px;
+    margin: auto;
+}
+.book_item{
+    position: relative;
+    height: 158px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #000;
+}
+.book_img{
+    float: left;
+    z-index: 3;
+    width: 102px;
+    height: 136px;
+    margin-right: 16px;
+}
+.book_img a{
+    display: block;
+    overflow: hidden;
+    width: 102px;
+    height: 136px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.35);
+}
+.book_img a img{
+    width: 102px;
+    height: 136px;
+    transition:transform,4s ease-out;
+}
+.book_text{
+    width: 380px;
+}
+.book_text h4{
+    font:18px/24px PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;
+    overflow: hidden;
+    height: 24px;
+    margin-bottom: 8px;
+}
+.book_text h4 a{
+    text-decoration: none;
+    color: #bf2c24;
+    outline: 0;
+}
+.intro{
+    font-size: 14px;
+    line-height: 24px;
+    overflow: hidden;
+    height: 68px;
+    margin-bottom: 8px;
+    color: #666;
+}
+.book_right{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 200px;
+    height: 136px;
+    margin-top: 5px;
+}
+.book_right p{
+    position: relative;
+    text-align: right;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.hehe{
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+               /*小说章节css*/
+
+.mu_content{
+    margin: 120px auto;
+    width: 600px;
+}
+.mu_title{
+    display: block;
+    width: 200px;
+    height: 41px;
+    text-align: left;
+    line-height: 41px;
+    list-style:none;
+    overflow: hidden;
+    float: left;
+}
+.mu_title a{
+    color: #000;
+    text-decoration: none;
+}
+.mu_title a:hover{
+    color: #bf2c24;
+}

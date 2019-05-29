@@ -38,4 +38,5 @@ urlpatterns = [
     re_path(r'^tengxu/zongyi/fenji/(?P<aqiyimovieLists>[0-9]+)$', views.teng_movie_fenji_zongyi, name="teng_fenji_zongyi"),
     re_path(r'^tengxu/dongman/fenji/(?P<aqiyimovieLists>[0-9]+)$', views.teng_movie_fenji_dongman, name="teng_fenji_dongman"),
     re_path(r'^tengxu/jilu/fenji/(?P<aqiyimovieLists>[0-9]+)$', views.teng_movie_fenji_jilu, name="teng_fenji_jilu"),
+
 ]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小说网</title>
+    <link rel="stylesheet" href="{% static 'css/xiaosuo.css' %}">
+</head>
+<body>
+    <div class="Form_content">
+        <form class="Form" action="{% url 'xiaoshuo:xiaoshuo' %}" method="get">
+            <input type="text" required placeholder="搜索鸭" class="xiaoshuo_text" name="xiaoshuo_text" />
+            <input type="submit" value="搜索" class="xiao_submit" />
+        </form>
+    </div>
+    <div class="book_content">
+        <ul>
+            {% for xiao in xiaosuo %}
+                <li class="book_item">
+                    <div class="book_img">
+                        <a href="{% url 'xiaoshuo:xiaoshuoMu' xiao.id %}">
+                            <img src="{{ xiao.src }}">
+                        </a>
+                    </div>
+                    <div class="book_text">
+                        <h4>
+                            <a href="{% url 'xiaoshuo:xiaoshuoMu' xiao.id %}">{{ xiao.title }}</a>
+                        </h4>
+                        <p class="intro">
+                            {{ xiao.text }}
+                        </p>
+                    </div>
+                    <div class="book_right">
+                        <p>
+                            <span>{{ xiao.p1 }} 总字数</span>
+                        </p>
+                        <p>
+                            <span>{{ xiao.p2 }} 总推荐</span>
+                        </p>
+                        <p>
+                            <span>{{ xiao.p3 }} 总点击</span>
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a class="hehe" href="http://www.miitbeian.gov.cn/"><span>鄂ICP备18029761号</span><br/></a>
+</body>
+</html>

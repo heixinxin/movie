@@ -1,0 +1,127 @@
+*{
+    padding: 0;
+    margin: 0;
+	text-decoration: none;
+}
+#Me_image{
+    width: 100px;
+    height: 100px;
+    margin: 10px 150px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.login_content{
+    font-size: 22px;
+    color: #fff;
+}
+.left_text{
+    margin-left:70px;
+}
+.right_text{
+    margin-left: 200px;
+}
+#bind{
+
+}
+.but{
+    display: inline-block;
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+    margin:80px 0 0 50px;
+    padding-left:20px;
+    border:1px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    line-height: 50px;
+}
+
+
+
+.keyinput{
+    font-size: 20px;
+    height: 30px;
+    width: 700px;
+    margin-left: 150px;
+}
+.Submit_but{
+    height: 35px;
+    width: 100px;
+    border: 1px solid #000;
+    font-size: 20px;
+    background-color: #2a5caa;
+}
+
+.chat_text{
+    display:flex;
+    width: 700px;
+    height: 280px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.chat_text_left{
+    width:350px;
+    height: 280px;
+}
+.chat_text_right{
+    width: 350px;
+    height: 280px;
+}
+.chat_text_right ul{
+    font-size: 20px;
+    float: right;
+    margin-right: 40px;
+}
+
+
+.Mptext{
+    width: 700px;
+    height:75px;
+    background: #ddd;
+    font-size: 20px;
+    color: #FF8C00;
+}
+.buton{
+    height: 35px;
+    width: 100px;
+    float: right;
+    font-size: 20px;
+    color: #fff;
+    background-color: #905a3d;
+    border: 1px solid #000;
+}
+/*@media screen and (min-width:200px) and (max-device-width:640px){*/
+/*.Context{ width:100%;height:auto; margin:0 auto; background:#FFFFFF;}*/
+/*}*/
+
+@media screen and (min-width:200px) and (max-device-width:640px) {
+    /*这里写元素的样式*/
+    .Context {
+        width: 100%;
+        position: absolute;
+        left: 3%;
+    }
+    .chat{
+        width: 500px;
+    }
+    .keyinput{
+        margin-left:5%;
+    }
+    .Mptext{
+        width: 500px;
+    }
+    .chat_text{
+        width: 500px;
+    }
+    .right_Context{
+
+
+        margin-left: 1%;
+    }
+    .baidu{
+        width: 100%;
+    }
+/* --- Login  container ---*/
+
+}

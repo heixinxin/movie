@@ -31,7 +31,7 @@ body{
 	height: 70px;
 }
 .nav_li{
-
+	background-color: #FF8C00;
 }
 .actived{
 	background: #0066ff;
@@ -187,8 +187,15 @@ body{
 	margin: auto;
 	background:#444;
 	line-height: 50px;
-	padding-top: 30px;
+	padding-top: 15px;
 	font-size: 20px;
+}
+
+.fonter a:link,.fonter a:visited{
+	color: #000;
+}
+.fonter a:hover{
+	color: #000;
 }
 
 .movie_text_A_txt2{
@@ -202,7 +209,10 @@ body{
 	text-overflow: ellipsis;
 }
 
-
+.fenji_content{
+	width: 1300px;
+                margin: auto;
+}
 .fenji{
 	width: 850px;
 	margin: auto;

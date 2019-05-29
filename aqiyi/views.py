@@ -1,4 +1,4 @@
-
+﻿
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 import requests
@@ -42,11 +42,10 @@ class Pro4:
             p=30 * page - 30
             url_tengxun='http://v.qq.com/x/list/{}?&offset={}'.format(dic4[u_type],p)
 
-        pa_ai_movie_title = '//div[@class="site-piclist_pic"]/a[@class="site-piclist_pic_link"]/@title'
-        pa_ai_movie_url = '//div[@class="site-piclist_pic"]/a[@class="site-piclist_pic_link"]/@href'
-        pa_ai_movie_pic = '//div[@class="site-piclist_pic"]/a[@class="site-piclist_pic_link"]/img/@src'
-        pa_ai_movie_pin = '//div[@class="site-piclist_info"]/div[@class="mod-listTitle_left"]/span/text()'
-        pa_ai_movie_pin1 = '//div[@class="site-piclist_info"]/div[@class="mod-listTitle_left"]/span/strong[@class="num"]/text()'
+        pa_ai_movie_title = '//div[@class="qy-mod-link-wrap"]/a[@class="qy-mod-link"]/@title'
+        pa_ai_movie_url = '//div[@class="qy-mod-link-wrap"]/a[@class="qy-mod-link"]/@href'
+        pa_ai_movie_pic = '//div[@class="qy-mod-link-wrap"]/a[@class="qy-mod-link"]/img/@src'
+        pa_ai_movie_pin = '//div[@class="title-wrap "]/p[@class="main"]/span[@class="text-score"]/text()'
 
         pa_you_movie_title = '//div[@class="p-thumb"]/a/@title'
         pa_you_movie_url = '//div[@class="p-thumb"]/a/@href'
@@ -66,7 +65,6 @@ class Pro4:
             pa_movie_url = pa_ai_movie_url
             pa_movie_pic = pa_ai_movie_pic
             pa_movie_pin = pa_ai_movie_pin
-            pa_movie_pin1 = pa_ai_movie_pin1
             headers = self.header_ai
         elif u_name=="y":#如果是优酷
             url=url_youku
@@ -88,13 +86,13 @@ class Pro4:
             pa_movie_pic=pa_tx_movie_pic
             headers=self.header_xun
         if u_name == 'a':
-            return url,pa_movie_pin,pa_movie_pin1,pa_movie_title,pa_movie_url,pa_movie_pic,headers
+            return url,pa_movie_pin,pa_movie_title,pa_movie_url,pa_movie_pic,headers
         else:
             return url,pa_movie_title, pa_movie_url, pa_movie_pic, headers
 
     def get_movie_res(self,u_name,u_type,page):#输出电影名 链接，图片
         if u_name == 'a':
-            url,pa_movie_pin,pa_movie_pin1,pa_movie_title, pa_movie_url, pa_movie_pic,headers=self.search_movies_type(u_name,u_type,page)
+            url,pa_movie_pin,pa_movie_title, pa_movie_url, pa_movie_pic,headers=self.search_movies_type(u_name,u_type,page)
         else:
             url,pa_movie_title, pa_movie_url, pa_movie_pic, headers = self.search_movies_type(u_name, u_type, page)
         res=requests.get(url=url,headers=headers).content.decode('utf-8')
@@ -107,17 +105,15 @@ class Pro4:
         if u_name == 'a':
             if(u_type == 'm'):
                 movie_pin = html.xpath(pa_movie_pin)
-                movie_pin1 = html.xpath(pa_movie_pin1)
             else:
                 movie_pin = 0
-                movie_pin1 = 0
         # print(len(movie_pin), movie_pin)
         # print(len(movie_pin1), movie_pin1)
         # print(len(movie_title), movie_title)
         # print(len(movie_url), movie_url)
         # print(len(movie_src_pic), movie_src_pic)
         if u_name == 'a':
-            return movie_pin,movie_pin1,movie_url,movie_title,movie_src_pic
+            return movie_pin,movie_url,movie_title,movie_src_pic
         else:
             return movie_url, movie_title, movie_src_pic
 
@@ -203,8 +199,8 @@ class Pro4:
 
 aqiyimovieList = []
 aqifenji = []
-url = 'http://www.82190555.com/video.php?url='
-
+# url = 'http://jx.du2.cc/?url='
+url = 'http://mv.688ing.com/player?url='
 
 #########      控制 爱奇艺的   页数
 page = 1
@@ -361,10 +357,10 @@ def aqiyi(request):
     if len(aqiyimovieList) != 0:        #每次调用的时候 都判断一下是否有数据，有就清空
         deleat()
     p = Pro4()
-    movie_pin,movie_pin1,movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'm',1)
+    movie_pin,movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'm',1)
 
-    for i in range(0,30):
-        aqiyimovieLists = {'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i],'movie_pin':movie_pin1[i]+movie_pin[i]}
+    for i in range(len(movie_title)):
+        aqiyimovieLists = {'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i],'movie_pin':movie_pin[i]}
         aqiyimovieList.append(aqiyimovieLists)
     #print(aqiyimovieList)
     return render(request,"aqiyi/aqiyi.html",{'aqiyimovieList': aqiyimovieList,'url':url,'page':'1'})
@@ -380,18 +376,18 @@ def aqiyi_movie_dianyin(request,page_id):
     elif page_id == '0':
         page = 1
     p = Pro4()
-    movie_pin,movie_pin1,movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'm', page)
+    movie_pin,movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'm', page)
     if len(aqiyimovieList) != 0:
         deleat()
-    for i in range(0,30):
-        aqiyimovieLists = {'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i],'movie_pin':movie_pin1[i]+movie_pin[i]}
+    for i in range(len(movie_title)):
+        aqiyimovieLists = {'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i],'movie_pin':movie_pin[i]}
         aqiyimovieList.append(aqiyimovieLists)
     #print(aqiyimovieList)
     return render(request,"aqiyi/aqiyi.html",{'aqiyimovieList': aqiyimovieList,'url':url,'page':page})
 
 def aqi_movie_TV(request,page_id):
     page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30]
+            30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48]
     global page_TV
     if page_id == '2':
         pagejia_TV(page_TV)
@@ -405,9 +401,8 @@ def aqi_movie_TV(request,page_id):
     if len(aqiyimovieList) != 0:
         deleat()
     p = Pro4()
-    movie_pin, movie_pin1, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 't', page_TV)
-
-    for i in range(0, 30):
+    movie_pin, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 't', page_TV)
+    for i in range(len(movie_title)):
         aqiyimovieLists = {'page':page[i],'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i]}
         aqiyimovieList.append(aqiyimovieLists)
    # print(aqiyimovieList)
@@ -415,7 +410,7 @@ def aqi_movie_TV(request,page_id):
 
 def aqi_movie_zongyi(request,page_id):
     page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30]
+            30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
 
     global page_zongyi
     if page_id == '2':
@@ -430,9 +425,9 @@ def aqi_movie_zongyi(request,page_id):
     if len(aqiyimovieList) != 0:
         deleat()
     p = Pro4()
-    movie_pin, movie_pin1, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'z', page_zongyi)
+    movie_pin, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'z', page_zongyi)
 
-    for i in range(0, 30):
+    for i in range(len(movie_title)):
         aqiyimovieLists = {'page':page[i],'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i]}
         aqiyimovieList.append(aqiyimovieLists)
    # print(aqiyimovieList)
@@ -440,7 +435,7 @@ def aqi_movie_zongyi(request,page_id):
 
 def aqi_movie_dongman(request,page_id):
     page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30]
+            30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
 
     global page_dongman
     if page_id == '2':
@@ -455,9 +450,9 @@ def aqi_movie_dongman(request,page_id):
     if len(aqiyimovieList) != 0:
         deleat()
     p = Pro4()
-    movie_pin, movie_pin1, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'd', page_dongman)
+    movie_pin, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'd', page_dongman)
 
-    for i in range(0, 30):
+    for i in range(len(movie_title)):
         aqiyimovieLists = {'page':page[i],'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i]}
         aqiyimovieList.append(aqiyimovieLists)
    # print(aqiyimovieList)
@@ -465,7 +460,7 @@ def aqi_movie_dongman(request,page_id):
 
 def aqi_movie_jilu(request,page_id):
     page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30]
+            30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]
 
     global page_jilu
     if page_id == '2':
@@ -481,9 +476,9 @@ def aqi_movie_jilu(request,page_id):
     if len(aqiyimovieList) != 0:
         deleat()
     p = Pro4()
-    movie_pin, movie_pin1, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'j', page_jilu)
+    movie_pin, movie_url, movie_title, movie_src_pic, = p.get_movie_res('a', 'j', page_jilu)
 
-    for i in range(0, 30):
+    for i in range(len(movie_title)):
         aqiyimovieLists = {'page':page[i],'movie_url': movie_url[i], 'movie_title': movie_title[i], 'movie_src_pic': movie_src_pic[i]}
         aqiyimovieList.append(aqiyimovieLists)
    # print(aqiyimovieList)
@@ -807,6 +802,7 @@ def you_movie_fenji_dongman(request,aqiyimovieLists):   #aqiyimovieLists 传过�
 
 
 
+
 ###              腾讯
 def teng(request):
     if len(aqiyimovieList) != 0:        #每次调用的时候 都判断一下是否有数据，有就清空
@@ -1025,3 +1021,11 @@ def teng_movie_fenji_dongman(request,aqiyimovieLists):   #aqiyimovieLists 传过
    # print(aqifenji)
     #print(tv_dic_new)
     return render(request, "youku/you_fenji.html", {'aqifenji':aqifenji,'aqi':aqi,'url':url})
+
+
+
+
+def main(request):
+    return render(request,'index.html')
+def siga(request):
+    return render(request,'index1.html')

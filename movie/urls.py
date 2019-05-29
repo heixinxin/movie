@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from aqiyi import views
+from chat import views as vs
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'',views.aqiyi),
+    path(r'',views.teng),
     path(r'',include("aqiyi.urls",namespace='aqiyi')),
+    path(r'',include('chat.urls',namespace='chat')),
+    path(r'',include('xiaoshuo.urls',namespace='xiaoshuo'))
 ]
